@@ -2,7 +2,7 @@
 // parse data properly
 var umap = []
 data.map(function(d) {umap[d[0]]=Number(d[1])});
-console.log(umap);
+// console.log(umap);
 
 var v = Object.keys(umap).map(function(k){return umap[k]})
 // console.log(v);
@@ -164,12 +164,16 @@ function drawProvinces(error, cn) {
         .attr("d", path)
         .attr("id", function(d) { return d.id; })
         .attr("class", "province")
-        .attr("fill", "#cccccc")
         .attr("fill", function(d) { 
             return color(umap[d.properties.name]);
         })
         .attr("stroke", "white")
-        .attr("stroke-width", "0.7");
+        .attr("stroke-width", "0.5")
+        .call(d3.helper.tooltip(
+            function(d, i){
+              return "<b>"+d.properties.name + "</b><br/>Enrollment Rate: "+d3.round(umap[d.properties.name],2) +"%";
+            }
+        ));
 }
 
 
