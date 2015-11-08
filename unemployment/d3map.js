@@ -251,19 +251,18 @@ function wrap(text, width) {
 // Animation of a province
 function provinceOnclick() {
     $('.province').click(function(){
-        if($(this).data('enlarged')) {
+        if(!$(this).data('enlarged')) {
+            // Enlarge this province.
+            $(this).data('enlarged', true);
+            $('.province').not(this).hide();
+            provinceAnimation(this, true);            
+        } else {
             // Zoom out to whole map.
             $(this).data('enlarged', false); 
             provinceAnimation(this, false, function(){
                 // Do not show other provinces until this province zooms out.
                 $('.province').show();
             });
-        } else {
-            // Enlarge this province.
-            $(this).data('enlarged', true);
-            $('.province').hide();
-            $(this).show();
-            provinceAnimation(this, true);
         }
     });
 }
