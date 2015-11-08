@@ -1,4 +1,49 @@
+// Jquery frame rate
+jQuery.fx.interval = 10;
+
 //DATA 
+// MAP setup
+var width = 800,
+    height = 550;
+
+// data goes here
+var data=[
+  ["Anhui",3.89],
+  ["Beijing",1.20],
+  ["Chongqing",3.50],
+  ["Fujian",3.38],
+  ["Gansu",2.31],
+  ["Guangdong",2.55],
+  ["Guangxi",3.74],
+  ["Guizhou",3.89],
+  ["Hainan",2.25],
+  ["Hebei",3.59],
+  ["Heilongjiang",4.59],
+  ["Henan",3.58],
+  ["Hubei",3.72],
+  ["Hunan",4.12],
+  ["Inner Mongol",4.04],
+  ["Jiangsu",3.01],
+  ["Jiangxi",3.27],
+  ["Jilin",3.57],
+  ["Liaoning",3.55],
+  ["Ningxia",4.15],
+  ["Qinghai",3.26],
+  ["Shaanxi",3.45],
+  ["Shandong",3.35],
+  ["Shanghai",4.21],
+  ["Shanxi",3.40],
+  ["Sichuan",4.15],
+  ["Tianjin",3.57],
+  ["Xizang",3.29],
+  ["Xinjiang",3.48],
+  ["Yunnan",3.88],
+  ["Zhejiang",2.99]
+];
+var title = "2014 Unemployment Rate(%)";
+var desc = "Source: China Statistical Information and Consultancy Centre (CSICC)";
+var credits='';var units='';
+
 // parse data properly
 var umap = []
 data.map(function(d) {umap[d[0]]=Number(d[1])});
@@ -141,6 +186,7 @@ svg.select('.caption')
 // DRAW
 function drawMap(error,mainland) {
     drawProvinces(error,mainland);
+    provinceOnclick();
 }
 
 // Mainland provinces
@@ -200,4 +246,44 @@ function wrap(text, width) {
       }
     }
   });
+}
+
+// Animation of a province
+function provinceOnclick() {
+    $('.province').click(function(){
+        if($(this).data('enlarged')) {
+            // Zoom out to whole map.
+            $(this).data('enlarged', false); 
+            provinceAnimation(this, false, function(){
+                // Do not show other provinces until this province zooms out.
+                $('.province').show();
+            });
+        } else {
+            // Enlarge this province.
+            $(this).data('enlarged', true);
+            $('.province').hide();
+            $(this).show();
+            provinceAnimation(this, true);
+        }
+    });
+}
+
+function provinceAnimation(provinceElement, zoomin, completeCallback) {
+    var box = provinceElement.getBBox();
+    var cx = box.x + box.width/2;
+    var cy = box.y + box.height/2;
+
+
+    $(provinceElement).animate(
+        { scale: zoomin ? 1.5 :  1},
+        { 
+            duration: 1000,
+            step: function(now, fx) {
+                scaleVal = now;
+                $(provinceElement).attr(
+                    "transform", "translate(" + cx + " " + cy + ") scale(" + scaleVal + ") translate(" + (-cx) + " " + (-cy) + ")");
+            },
+            complete: completeCallback 
+        }
+    );
 }
