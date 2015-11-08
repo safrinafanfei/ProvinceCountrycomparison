@@ -169,7 +169,12 @@ function drawProvinces(error, cn) {
             return color(umap[d.properties.name]);
         })
         .attr("stroke", "white")
-        .attr("stroke-width", "0.7");
+        .attr("stroke-width", "0.5")
+        .call(d3.helper.tooltip(
+            function(d, i){
+              return "<b>"+d.properties.name + "</b><br/>Unemployment Rate: "+d3.round(umap[d.properties.name],2) +"%";
+            }
+        ));
 }
 
 
