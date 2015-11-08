@@ -32,7 +32,7 @@ var path = d3.geo.path()
 var colorScale = d3.scale.linear()
            .domain(d3.extent(v))
            .interpolate(d3.interpolateHcl)
-           .range(["#fee0d2", "#de2d26"]);
+           .range(["#FCDBDB", "#A00404"]);
 
 // add grey color if no values
 var color = function(i){ 
@@ -153,7 +153,7 @@ function drawProvinces(error, cn) {
     // };
     // console.log(codes);
 
-    svg.append("g")
+svg.append("g")
         .attr("class", "map")
         .append("g")
         .attr("class", "mainland")
@@ -165,10 +165,19 @@ function drawProvinces(error, cn) {
         .attr("id", function(d) { return d.id; })
         .attr("class", "province")
         .attr("fill", "#cccccc")
-        .attr("fill", function(d) { return color(umap[d.properties.name]); })
+        .attr("fill", function(d) { 
+            return color(umap[d.properties.name]);
+        })
         .attr("stroke", "white")
-        .attr("stroke-width", "0.7");
-}
+        .attr("stroke-width", "0.5")
+        .call(d3.helper.tooltip(
+            function(d, i){
+              return "<b>"+d.properties.name +"</b>"+ "<br/>"+ "$"+d3.round(umap[d.properties.name],2);
+            }
+        ));
+
+    }
+
 
 
 function wrap(text, width) {

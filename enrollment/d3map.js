@@ -171,7 +171,7 @@ function drawProvinces(error, cn) {
         .attr("stroke-width", "0.5")
         .call(d3.helper.tooltip(
             function(d, i){
-              return "<b>"+d.properties.name + "</b><br/>Enrollment Rate: "+d3.round(umap[d.properties.name],2) +"%";
+              return "<b>"+d.properties.name + "</b>"+"<br/>"+d3.round(umap[d.properties.name],2) +"%";
             }
         ));
 }
