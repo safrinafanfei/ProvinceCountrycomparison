@@ -4,24 +4,50 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>If Chinese provinces were countries...</title>
-	<link href="css/package.css" type="text/css" rel="stylesheet" media="screen"> 
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <style>
-	h1 {
+	h2{
 		font-family:serif;
 		font-size: 2.5em;
-		float: right;
 		font-weight: lighter;
-		margin-right: 100px;
+		margin: 250px 100px 10px 550px;
 		margin-top: 250px;
+	}
+
+	h3{
+		font-family:serif;
+		font-size: 1.2em;
+		margin: 0px 50px 100px 900px;
+		font-weight: lighter;
 	}
 </style>
 <body>
 	<header>
-		<h1> If Chinese provinces were countries...</h1>
-		
+		<div class = "head">
+			<h2> If China's provinces were countries...</h2>
+			<h3> Produced by Fan Fei </h3>
+		</div>
 	</header>
+		<div class ="map">
+			<img src="PIC/1.SVG" alt="Smiley face" height="400" width="1000">
+			<img src="PIC/2.SVG" alt="Smiley face" height="400" width="1000">
+		</div>
+
 </body>
+
+<script>
+jQuery(function($) {
+    var divs = $('.head');
+    $(window).on('scroll', function() {
+        var st = $(this).scrollTop();
+        divs.css({ 
+            'margin-top' : -(st/3)+"px", 
+            'opacity' : 1 - st/35
+        }); 
+    });
+});
+</script>
 </html>
