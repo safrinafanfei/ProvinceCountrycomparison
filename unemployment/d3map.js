@@ -1,3 +1,9 @@
+$(document).ready(function(){
+
+    // Hide all provinceicon.
+    $('.provinceicon').hide();
+})
+
 // Jquery frame rate
 jQuery.fx.interval = 10;
 
@@ -250,21 +256,29 @@ function wrap(text, width) {
 
 // Animation of a province
 function provinceOnclick() {
-    $('.province').click(function(){
-        if(!$(this).data('enlarged')) {
-            // Enlarge this province.
-            $(this).data('enlarged', true);
-            $('.province').not(this).hide();
-            provinceAnimation(this, true);            
-        } else {
-            // Zoom out to whole map.
-            $(this).data('enlarged', false); 
-            provinceAnimation(this, false, function(){
-                // Do not show other provinces until this province zooms out.
-                $('.province').show();
+    for (var i = 0; i < 31 /* total province count */; i++){
+        (function registerProvinceClicks(index){
+            $('#' + index).click(function(){
+                $('#' + index + '_1').toggle();
+                $('.info').toggle();
+                $('.caption').toggle();
+
+                if(!$(this).data('enlarged')) {
+                    // Enlarge this province.
+                    $(this).data('enlarged', true);
+                    $('.province').not(this).hide();
+                    provinceAnimation(this, true); 
+                } else {
+                    // Zoom out to whole map.
+                    $(this).data('enlarged', false); 
+                    provinceAnimation(this, false, function(){
+                        // Do not show other provinces until this province zooms out.
+                        $('.province').show();
+                    });
+                }
             });
-        }
-    });
+        })(i);
+    }
 }
 
 function provinceAnimation(provinceElement, zoomin, completeCallback) {
