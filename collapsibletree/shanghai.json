@@ -1,0 +1,40 @@
+{
+    "name": "Shanghai",
+    "parents": [
+        {
+            "name": "Aviation",
+            "isparent": true
+        },
+        {
+            "name": "Transparent_companies",
+            "isparent": true
+        },
+        {
+            "name": "Transport_operators",
+            "isparent": true
+        }
+    ],
+    "children": [
+        {
+            "name": "Ecuador",
+            "isparent": false
+        },
+        {
+            "name": "Honduras",
+            "isparent": false
+        },
+        {
+            "name": "Sri Lanka",
+            "isparent": false
+        },
+        {
+            "name": "Bangladesh",
+            "isparent": false
+        },
+        {
+            "name": "Panama",
+            "isparent": false
+        },
+
+    ]
+}
