@@ -1,6 +1,6 @@
-"rank","country","unem","diff","province"
-1,"Burkina Faso",3.1,0,"Henan"
-2,"Korea, Rep.",3.1,0,"Henan"
-3,"Kuwait",3.1,0,"Henan"
-4,"Cuba",3.2,0.1,"Henan"
-5,"Malaysia",3.2,0.1,"Henan"
+rank,name,parent,icon,value,diff,province
+1,Burkina Faso,Top Level,../PIC/FLAGS/ecuador.png,3.1,0,Henan
+2,"Korea, Rep.",Top Level,../PIC/FLAGS/ecuador.png,3.1,0,Henan
+3,Kuwait,Top Level,../PIC/FLAGS/Thailand.png,3.1,0,Henan
+4,Cuba,Top Level,../PIC/FLAGS/ecuador.png,3.2,0.1,Henan
+5,Malaysia,Top Level,../PIC/FLAGS/ecuador.png,3.2,0.1,Henan
