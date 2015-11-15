@@ -25,6 +25,7 @@
 	  fill: none;
 	  stroke: #ccc;
 	  stroke-width: 2px;
+    stroke-dasharray:2,2;
 	}
 	
     </style>
@@ -40,34 +41,40 @@
 
 var treeData = [
   {
-    "name": "Shanghai",
+    "name": "Anhui",
     "parent": "null",
+    "value":"3.4%",
     "children": [
       {
-        "name": "Ecuador",
+        "name": "Myanmar",
         "parent": "Top Level",
-        "icon":"ecuador.png",
+        "value":"3.4%",
+        "icon":"../PIC/FLAGS/Myanmar.png",
       },
       {
-        "name": "Honduras",
+        "name": "Norway",
         "parent": "Top Level",
-        "icon":"hondurus.png",
+        "value":"3.5%",
+        "icon":"../PIC/FLAGS/Norway.png",
       },
       {
-        "name": "Sri Lanka",
+        "name": "Tanzania",
         "parent": "Top Level",
-        "icon":"srilanka.png",
+        "value":"3.5%",
+        "icon":"../PIC/FLAGS/Tanzania.png",
       },
       {
-        "name": "Bangladesh",
+        "name": "Cuba",
         "parent": "Top Level",
-        "icon":"banladish.png",
+        "value":"3.2%",
+        "icon":"../PIC/FLAGS/Cuba.png",
 
       },
       {
-        "name": "Panama",
+        "name": "India",
         "parent": "Top Level",
-        "icon":"panama.png",
+        "value":"3.6%",
+        "icon":"../PIC/FLAGS/India.png",
       },
     ]
   }
@@ -130,13 +137,13 @@ function update(source) {
 	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
 	  .attr("dy", ".35em")
 	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-	  .text(function(d) { return d.name; })
+	  .text(function(d) { return d.name + ":  " +d.value; })
 	  .style("fill-opacity", 1e-6);
 
 // append flags
 	nodeEnter.append("image")
       .attr("xlink:href", function(d) { return d.icon; })
-      .attr("x", "90px")
+      .attr("x", "100px")
       .attr("y", "-12px")
       .attr("width", "40px")
       .attr("height", "40px");
