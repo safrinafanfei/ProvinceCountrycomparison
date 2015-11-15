@@ -1,6 +1,6 @@
-"rank","country","unem","diff","province"
-1,"Burkina Faso",3.1,0.1,"Jiangsu"
-2,"Korea, Rep.",3.1,0.1,"Jiangsu"
-3,"Kuwait",3.1,0.1,"Jiangsu"
-4,"Cuba",3.2,0.2,"Jiangsu"
-5,"Guatemala",2.8,0.2,"Jiangsu"
+rank,parent,icon,name,value,diff,province
+1,Top Level,../PIC/FLAGS/ecuador.png,Burkina Faso,3.1,0.1,Jiangsu
+2,Top Level,../PIC/FLAGS/ecuador.png,"Korea, Rep.",3.1,0.1,Jiangsu
+3,Top Level,../PIC/FLAGS/Thailand.png,Kuwait,3.1,0.1,Jiangsu
+4,Top Level,../PIC/FLAGS/ecuador.png,Cuba,3.2,0.2,Jiangsu
+5,Top Level,../PIC/FLAGS/ecuador.png,Guatemala,2.8,0.2,Jiangsu

@@ -1,6 +1,6 @@
-"rank","country","unem","diff","province"
-1,"Ecuador",4.2,0,"Hunan"
-2,"Honduras",4.2,0,"Hunan"
-3,"Sri Lanka",4.2,0,"Hunan"
-4,"Bangladesh",4.3,0.1,"Hunan"
-5,"Panama",4.1,0.1,"Hunan"
+rank,name,parent,icon,value,diff,province
+1,Ecuador,Top Level,../PIC/FLAGS/ecuador.png,4.2,0,Hunan
+2,Honduras,Top Level,../PIC/FLAGS/ecuador.png,4.2,0,Hunan
+3,Sri Lanka,Top Level,../PIC/FLAGS/Thailand.png,4.2,0,Hunan
+4,Bangladesh,Top Level,../PIC/FLAGS/ecuador.png,4.3,0.1,Hunan
+5,Panama,Top Level,../PIC/FLAGS/ecuador.png,4.1,0.1,Hunan
