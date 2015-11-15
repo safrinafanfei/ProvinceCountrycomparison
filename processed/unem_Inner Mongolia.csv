@@ -1,6 +1,6 @@
-"rank","country","unem","diff","province"
-1,"Liberia",3.7,0,"Inner Mongolia"
-2,"United Arab Emirates",3.8,0.1,"Inner Mongolia"
-3,"Brunei Darussalam",3.8,0.1,"Inner Mongolia"
-4,"India",3.6,0.1,"Inner Mongolia"
-5,"Madagascar",3.6,0.1,"Inner Mongolia"
+rank,name,parent,icon,value,diff,province
+1,Liberia,Top Level,../PIC/FLAGS/ecuador.png,3.7,0,Inner Mongolia
+2,United Arab Emirates,Top Level,../PIC/FLAGS/ecuador.png,3.8,0.1,Inner Mongolia
+3,Brunei Darussalam,Top Level,../PIC/FLAGS/Thailand.png,3.8,0.1,Inner Mongolia
+4,India,Top Level,../PIC/FLAGS/ecuador.png,3.6,0.1,Inner Mongolia
+5,Madagascar,Top Level,../PIC/FLAGS/ecuador.png,3.6,0.1,Inner Mongolia

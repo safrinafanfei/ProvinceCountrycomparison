@@ -1,6 +1,6 @@
-"rank","country","unem","diff","province"
-1,"Cuba",3.2,0.1,"Qinghai"
-2,"Myanmar",3.4,0.1,"Qinghai"
-3,"Malaysia",3.2,0.1,"Qinghai"
-4,"Sierra Leone",3.2,0.1,"Qinghai"
-5,"Burkina Faso",3.1,0.2,"Qinghai"
+rank,name,parent,icon,value,diff,province
+1,Cuba,Top Level,../PIC/FLAGS/ecuador.png,3.2,0.1,Qinghai
+2,Myanmar,Top Level,../PIC/FLAGS/ecuador.png,3.4,0.1,Qinghai
+3,Malaysia,Top Level,../PIC/FLAGS/Thailand.png,3.2,0.1,Qinghai
+4,Sierra Leone,Top Level,../PIC/FLAGS/ecuador.png,3.2,0.1,Qinghai
+5,Burkina Faso,Top Level,../PIC/FLAGS/ecuador.png,3.1,0.2,Qinghai

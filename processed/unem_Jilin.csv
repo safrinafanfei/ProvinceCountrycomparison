@@ -1,6 +1,6 @@
-"rank","country","unem","diff","province"
-1,"United Arab Emirates",3.8,0,"Jilin"
-2,"Brunei Darussalam",3.8,0,"Jilin"
-3,"Solomon Islands",3.8,0,"Jilin"
-4,"Uganda",3.8,0,"Jilin"
-5,"Liberia",3.7,0.1,"Jilin"
+rank,name,parent,icon,value,diff,province
+1,United Arab Emirates,Top Level,../PIC/FLAGS/ecuador.png,3.8,0,Jilin
+2,Brunei Darussalam,Top Level,../PIC/FLAGS/ecuador.png,3.8,0,Jilin
+3,Solomon Islands,Top Level,../PIC/FLAGS/Thailand.png,3.8,0,Jilin
+4,Uganda,Top Level,../PIC/FLAGS/ecuador.png,3.8,0,Jilin
+5,Liberia,Top Level,../PIC/FLAGS/ecuador.png,3.7,0.1,Jilin

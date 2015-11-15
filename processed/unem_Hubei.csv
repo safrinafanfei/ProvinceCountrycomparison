@@ -1,6 +1,6 @@
-"rank","country","unem","diff","province"
-1,"Norway",3.5,0,"Hubei"
-2,"Tanzania",3.5,0,"Hubei"
-3,"India",3.6,0.1,"Hubei"
-4,"Madagascar",3.6,0.1,"Hubei"
-5,"Myanmar",3.4,0.1,"Hubei"
+rank,parent,icon,name,value,diff,province
+1,Top Level,../PIC/FLAGS/ecuador.png,Norway,3.5,0,Hubei
+2,Top Level,../PIC/FLAGS/ecuador.png,Tanzania,3.5,0,Hubei
+3,Top Level,../PIC/FLAGS/Thailand.png,India,3.6,0.1,Hubei
+4,Top Level,../PIC/FLAGS/ecuador.png,Madagascar,3.6,0.1,Hubei
+5,Top Level,../PIC/FLAGS/ecuador.png,Myanmar,3.4,0.1,Hubei
