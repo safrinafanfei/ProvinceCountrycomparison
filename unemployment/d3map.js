@@ -1,9 +1,10 @@
 $(document).ready(function(){
 
-    // Hide all provinceicon.
+    // Hide all provinceicon. ctree, linechart
     $('.provinceicon').hide();
 })
-
+    $('.ctree').hide();
+    $('.chart').hide();
 // Jquery frame rate
 jQuery.fx.interval = 10;
 
@@ -260,6 +261,8 @@ function provinceOnclick() {
         (function registerProvinceClicks(index){
             $('#' + index).click(function(){
                 $('#' + index + '_1').toggle();
+                $('#'+index + '_2').toggle();
+                $('#'+index + '_3').toggle();
                 $('.info').toggle();
                 $('.caption').toggle();
 
@@ -268,6 +271,7 @@ function provinceOnclick() {
                     $(this).data('enlarged', true);
                     $('.province').not(this).hide();
                     provinceAnimation(this, true); 
+                    $()
                 } else {
                     // Zoom out to whole map.
                     $(this).data('enlarged', false); 

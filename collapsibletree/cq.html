@@ -13,7 +13,7 @@
 
 	.node circle {
 	  fill: #fff;
-	  stroke: steelblue;
+	  stroke: #A00404;
 	  stroke-width: 3px;
 	}
 
@@ -25,6 +25,7 @@
 	  fill: none;
 	  stroke: #ccc;
 	  stroke-width: 2px;
+    stroke-dasharray:2,2;
 	}
 	
     </style>
@@ -40,28 +41,14 @@
 
 var treeData = [
   {
-    "name": "Top Level",
+    "name": "Chongqing",
     "parent": "null",
-    "children": [
-      {
-        "name": "Level 2: A",
-        "parent": "Top Level",
-        "children": [
-          {
-            "name": "Son of A",
-            "parent": "Level 2: A"
-          },
-          {
-            "name": "Daughter of A",
-            "parent": "Level 2: A"
-          }
-        ]
-      },
-      {
-        "name": "Level 2: B",
-        "parent": "Top Level"
-      }
-    ]
+    "value":"3.4",
+    "children": [{"name":"Myanmar","parent":"Top Level","icon":"../PIC/FLAGS/Myanmar.png","value":"3.4"},
+{"name":"Norway","parent":"Top Level","icon":"../PIC/FLAGS/Norway.png","value":"3.5"},
+{"name":"Tanzania","parent":"Top Level","icon":"../PIC/FLAGS/Tanzania.png","value":"3.5"},
+{"name":"Cuba","parent":"Top Level","icon":"../PIC/FLAGS/Cuba.png","value":"3.2"},
+{"name":"India","parent":"Top Level","icon":"../PIC/FLAGS/India.png","value":"3.6"}]
   }
 ];
 
@@ -84,7 +71,7 @@ var diagonal = d3.svg.diagonal()
 var svg = d3.select("body").append("svg")
 	.attr("width", width + margin.right + margin.left)
 	.attr("height", height + margin.top + margin.bottom)
-  .append("g")
+  	.append("g")
 	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 root = treeData[0];
@@ -122,12 +109,20 @@ function update(source) {
 	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
 	  .attr("dy", ".35em")
 	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-	  .text(function(d) { return d.name; })
+	  .text(function(d) { return d.name+": " + d.value + "%"; })
 	  .style("fill-opacity", 1e-6);
+
+// append flags
+	nodeEnter.append("image")
+      .attr("xlink:href", function(d) { return d.icon; })
+      .attr("x", "100px")
+      .attr("y", "-12px")
+      .attr("width", "40px")
+      .attr("height", "40px");
 
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
-	  .duration(duration)
+	  .duration(3000)
 	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeUpdate.select("circle")
@@ -163,7 +158,7 @@ function update(source) {
 
   // Transition links to their new position.
   link.transition()
-	  .duration(duration)
+	  .duration(3000)
 	  .attr("d", diagonal);
 
   // Transition exiting nodes to the parent's new position.

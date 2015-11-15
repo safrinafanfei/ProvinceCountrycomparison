@@ -51,8 +51,6 @@
       stroke-width : 1.5px;
       } 
 
-
-
     </style>
 </head>
 <body>
@@ -61,8 +59,8 @@
     <script type="text/javascript">
 
     var margin = {top:50, right:0, bottom:70, left:70},
-        width  = 600+margin.left+margin.right,
-        height = 400+margin.top+margin.bottom,
+        width  = 300+margin.left+margin.right,
+        height = 200+margin.top+margin.bottom,
         legendWidth = 200;
 
     var parseDate = d3.time.format("%Y").parse;
@@ -81,6 +79,7 @@
         .scale(y)
         .tickSize(width)
         .orient("right")
+    var color = d3.scale.category10();
 
     var line = d3.svg.line()
         .x(function(d) { return x(d.year); })
@@ -189,14 +188,6 @@
   /* Create a shared transition for anything we're animating */
   setTimeout(function(){
     y.domain([0,3e6]);
-
-    gy.transition()
-      .duration(2500)
-      .call(yAxis)
-    .selectAll("text") // cancel transition on customized attributes
-      .tween("attr.x", null)
-      .tween("attr.dy", null);
-
     gy.call(customAxis);
     }, 1000);
 
