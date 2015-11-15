@@ -3,10 +3,12 @@ $(document).ready(function(){
     // Hide all provinceicon. ctree, linechart
     $('.provinceicon').hide();
 })
-    $('.ctree').hide();
-    $('.chart').hide();
+
+$('.ctree').hide();
+$('.chart').hide();
+
 // Jquery frame rate
-jQuery.fx.interval = 10;
+jQuery.fx.interval = 9;
 
 //DATA 
 // MAP setup
@@ -263,21 +265,22 @@ function provinceOnclick() {
                 $('#' + index + '_1').toggle();
                 $('#'+index + '_2').toggle();
                 $('#'+index + '_3').toggle();
-                $('.info').toggle();
-                $('.caption').toggle();
 
                 if(!$(this).data('enlarged')) {
                     // Enlarge this province.
                     $(this).data('enlarged', true);
                     $('.province').not(this).hide();
-                    provinceAnimation(this, true); 
-                    $()
+                    provinceAnimation(this, true);
+                    $('.caption').hide();
+                    $('.info').hide();
                 } else {
                     // Zoom out to whole map.
                     $(this).data('enlarged', false); 
                     provinceAnimation(this, false, function(){
                         // Do not show other provinces until this province zooms out.
                         $('.province').show();
+                        $('.caption').show();
+                        $('.info').show();
                     });
                 }
             });
@@ -292,7 +295,7 @@ function provinceAnimation(provinceElement, zoomin, completeCallback) {
 
 
     $(provinceElement).animate(
-        { scale: zoomin ? 1.5 :  1},
+        { scale: (zoomin ? 1.5 : 1)},
         { 
             duration: 1000,
             step: function(now, fx) {
