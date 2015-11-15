@@ -19,25 +19,28 @@
           font-size: 0.8em;
           text-align:center;
           }
+
+        #provinceicons {
+          z-index: -1;
+        }
         
         .provinceicon{
-          position: absolute;
+          position: fixed;
           left: 141px;
           top: 164px;
           width: 300px;
-          }
+        }
 
         iframe{
-        margin:0 100px 0 500px;
-        width:100%;
-        height:800px;
-}
+          margin:0 100px 0 500px;
+          width:100%;
+          height:800px;
+        }
    
     </style>
   </head>
   <body>
-    <div id="map">
-      <div>
+    <div id="provinceicons">
         <img id="0_1" class="provinceicon" src="../PIC/0.svg"></img>
         <iframe id="0_2" class="ctree" src="../collapsibletree/0.html" frameborder="0"></iframe>
         <img id="1_1" class="provinceicon" src="../PIC/1.svg"></img>
@@ -100,10 +103,10 @@
         <img id="29_1" class="provinceicon" src="../PIC/29.svg"></img>
         <iframe id="29_2" class="ctree" src="../collapsibletree/29.html" frameborder="0"></iframe>
         <img id="30_1" class="provinceicon" src="../PIC/30.svg"></img>
-        <iframe id="30_2" class="ctree" src="../collapsibletree/30.html" frameborder="0"></iframe>
-        
-      </div>
+        <iframe id="30_2" class="ctree" src="../collapsibletree/30.html" frameborder="0"></iframe>  
     </div>
+
+    <div id="map"></div>
 
     <script src="jquery-2.1.4.min.js"></script>
     <script src="//d3js.org/d3.v3.min.js"></script>

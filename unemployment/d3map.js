@@ -1,9 +1,6 @@
-$(document).ready(function(){
 
-    // Hide all provinceicon. ctree, linechart
-    $('.provinceicon').hide();
-})
-
+// Hide all provinceicon. ctree, linechart
+$('.provinceicon').hide();
 $('.ctree').hide();
 $('.chart').hide();
 
@@ -262,6 +259,8 @@ function provinceOnclick() {
     for (var i = 0; i < 31 /* total province count */; i++){
         (function registerProvinceClicks(index){
             $('#' + index).click(function(){
+
+                // Show the corresponding province icons.
                 $('#' + index + '_1').toggle();
                 $('#'+index + '_2').toggle();
                 $('#'+index + '_3').toggle();
@@ -269,6 +268,7 @@ function provinceOnclick() {
                 if(!$(this).data('enlarged')) {
                     // Enlarge this province.
                     $(this).data('enlarged', true);
+                    $(this).css('opacity', 0.5);
                     $('.province').not(this).hide();
                     provinceAnimation(this, true);
                     $('.caption').hide();
@@ -276,6 +276,7 @@ function provinceOnclick() {
                 } else {
                     // Zoom out to whole map.
                     $(this).data('enlarged', false); 
+                    $(this).css('opacity', 1);
                     provinceAnimation(this, false, function(){
                         // Do not show other provinces until this province zooms out.
                         $('.province').show();
