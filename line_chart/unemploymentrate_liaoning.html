@@ -13,8 +13,8 @@
     .axis path,
     .axis line {
       fill: none;
-      stroke: #000;
-      stroke-width: 1;
+      stroke: #cccccc;
+      stroke-width: 2;
       shape-rendering: crispEdges;
       opacity:0.3;
 
@@ -77,8 +77,8 @@
         .orient("right");
 
     var setColor = d3.scale.ordinal()
-    .domain(["foo", "bar", "baz"])
-    .range(['#fef0d9',"#fc8d59",'#b30000']);;
+    .domain(["median", "closet", "province"])
+    .range(['#fee5d9',"#a50f15",'#fb6a4a']);;
 
     var line = d3.svg.line()
         .interpolate("basis")
@@ -154,7 +154,7 @@
             return setColor(i);
           })
           .attr("d", function(d) { 
-              return line(d.values);
+            return line(d.values);
           });
 
       country.append("text")
@@ -193,7 +193,7 @@
         gy.call(customAxis);
         }, 1000);
 
-        function customAxis(g) {
+      function customAxis(g) {
           g.selectAll("text")
               .attr("x", 4)
               .attr("dy", -4);
