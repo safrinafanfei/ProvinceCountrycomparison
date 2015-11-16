@@ -28,10 +28,8 @@
 
     .line {
       fill: none;
-      stroke: #A00404;
       stroke-width: 1.5px;
       stroke-opacity:.75;
-
     }
 
     .legend {
@@ -73,13 +71,13 @@
     var yAxis = d3.svg.axis()
         .scale(y)
         .tickSize(width, 0) // set outer to 0 to avoid ticks on the border
-        .orient("right")
-    var color = d3.scale.category10();
+        .orient("right");
+
+    var randomColor = d3.scale.category10();
 
     var line = d3.svg.line()
         .x(function(d) { return x(d.year); })
-        .y(function(d) { return y(d.rate); })
-        //.interpolate("basis");
+        .y(function(d) { return y(d.rate); });
 
     var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right + legendWidth)
@@ -145,6 +143,9 @@
 
       country.append("path")
           .attr("class", "line")
+          .attr("stroke", function(d, i){
+            return randomColor(i);
+          })
           .attr("d", function(d) { 
               return line(d.values);
           });
@@ -159,59 +160,59 @@
           .attr('class', 'legend')
           .text(function(d) { return d.name; });
 
-  // /* Add 'curtain' rectangle to hide entire graph */
-  // var curtain = svg.append('rect')
-  //   .attr('x', -1 * width)
-  //   .attr('y', -1 * height)
-  //   .attr('height', height)
-  //   .attr('width', width)
-  //   .attr('class', 'curtain')
-  //   .attr('transform', 'rotate(180)')
-  //   .style('fill', '#ffffff')
+      // /* Add 'curtain' rectangle to hide entire graph */
+      // var curtain = svg.append('rect')
+      //   .attr('x', -1 * width)
+      //   .attr('y', -1 * height)
+      //   .attr('height', height)
+      //   .attr('width', width)
+      //   .attr('class', 'curtain')
+      //   .attr('transform', 'rotate(180)')
+      //   .style('fill', '#ffffff')
 
-  // /* Optionally add a guideline */
-  // var guideline = svg.append('line')
-  //   .attr('stroke', '#333')
-  //   .attr('stroke-width',0)
-  //   .attr('class', 'guide')
-  //   .attr('x1', 1)
-  //   .attr('y1', 1)
-  //   .attr('x2', 1)
-  //   .attr('y2', height)
+      // /* Optionally add a guideline */
+      // var guideline = svg.append('line')
+      //   .attr('stroke', '#333')
+      //   .attr('stroke-width',0)
+      //   .attr('class', 'guide')
+      //   .attr('x1', 1)
+      //   .attr('y1', 1)
+      //   .attr('x2', 1)
+      //   .attr('y2', height)
 
-  /* Create a shared transition for anything we're animating */
-  setTimeout(function(){
-    y.domain([0,3e6]);
-    gy.call(customAxis);
-    }, 1000);
+      /* Create a shared transition for anything we're animating */
+      setTimeout(function(){
+        y.domain([0,3e6]);
+        gy.call(customAxis);
+        }, 1000);
 
-    function customAxis(g) {
-      g.selectAll("text")
-          .attr("x", 4)
-          .attr("dy", -4);
-    }
+        function customAxis(g) {
+          g.selectAll("text")
+              .attr("x", 4)
+              .attr("dy", -4);
+        }
 
 
-  var t = svg.transition()
-    .delay(750)
-    .duration(6000)
-    .ease('linear')
-    .each('end', function() {
-      d3.select('line.guide')
-        .transition()
-        .style('opacity', 0)
-        .remove()
-    });
+      var t = svg.transition()
+        .delay(750)
+        .duration(6000)
+        .ease('linear')
+        .each('end', function() {
+          d3.select('line.guide')
+            .transition()
+            .style('opacity', 0)
+            .remove()
+        });
 
-  // t.select('rect.curtain')
-  //   .attr('width', 0);
-  // t.select('line.guide')
-  //   .attr('transform', 'translate(' + width + ', 0)')
+      // t.select('rect.curtain')
+      //   .attr('width', 0);
+      // t.select('line.guide')
+      //   .attr('transform', 'translate(' + width + ', 0)')
 
-  // d3.select("#show_guideline").on("change", function(e) {
-  //   guideline.attr('stroke-width', this.checked ? 1 : 0);
-  //   curtain.attr("opacity", this.checked ? 0.75 : 1);
-  // })
+      // d3.select("#show_guideline").on("change", function(e) {
+      //   guideline.attr('stroke-width', this.checked ? 1 : 0);
+      //   curtain.attr("opacity", this.checked ? 0.75 : 1);
+      // })
 
 
 });
