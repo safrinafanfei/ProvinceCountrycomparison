@@ -41,7 +41,7 @@
 
 var treeData = [
   {
-    "name": "Inner Mongolia",
+    "name": "Inner Mongol",
     "parent": "null",
     "value":"3.7",
     "children": [{"name":"Liberia","parent":"Top Level","icon":"../PIC/FLAGS/Liberia.png","value":"3.7"},
@@ -121,7 +121,7 @@ function update(source) {
 
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
-	  .duration(3000)
+	  .duration(5000)
 	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
   nodeUpdate.select("circle")
@@ -157,7 +157,7 @@ function update(source) {
 
   // Transition links to their new position.
   link.transition()
-	  .duration(3000)
+	  .duration(5000)
 	  .attr("d", diagonal);
 
   // Transition exiting nodes to the parent's new position.

@@ -16,8 +16,10 @@
       stroke: #000;
       stroke-width: 1;
       shape-rendering: crispEdges;
+      opacity:0.3;
 
     }
+
 
     .y.axis line{
       stroke:#777;
@@ -28,8 +30,9 @@
 
     .line {
       fill: none;
-      stroke-width: 1.5px;
+      stroke-width: 3px;
       stroke-opacity:.75;
+
     }
 
     .legend {
@@ -73,11 +76,15 @@
         .tickSize(width, 0) // set outer to 0 to avoid ticks on the border
         .orient("right");
 
-    var randomColor = d3.scale.category10();
+    var setColor = d3.scale.ordinal()
+    .domain(["foo", "bar", "baz"])
+    .range(['#fef0d9',"#fc8d59",'#b30000']);;
 
     var line = d3.svg.line()
+        .interpolate("basis")
         .x(function(d) { return x(d.year); })
         .y(function(d) { return y(d.rate); });
+
 
     var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right + legendWidth)
@@ -130,7 +137,7 @@
           .attr("y", 6)
           .attr("dy", ".71em")
           .style("text-anchor", "end")
-          .text("Unemployment Rate")
+          .text("Unemployment Rate (%)")
           .attr("transform", "rotate(-90),translate(-10,-30)");      
 
 
@@ -144,7 +151,7 @@
       country.append("path")
           .attr("class", "line")
           .attr("stroke", function(d, i){
-            return randomColor(i);
+            return setColor(i);
           })
           .attr("d", function(d) { 
               return line(d.values);
