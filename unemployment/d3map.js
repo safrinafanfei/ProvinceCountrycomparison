@@ -262,7 +262,9 @@ function provinceOnclick() {
 
                 // Show the corresponding province icons.
                 $('#' + index + '_1').toggle();
+                //show the corresponding province tree. 
                 $('#'+index + '_2').toggle();
+                //show the corresponding province chart.
                 $('#'+index + '_3').toggle();
 
                 if(!$(this).data('enlarged')) {
