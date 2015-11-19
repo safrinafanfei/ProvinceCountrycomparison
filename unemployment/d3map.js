@@ -75,15 +75,21 @@ var svg = d3.select("#map").append("svg")
     .attr("preserveAspectRatio", "xMidYMid")
     .attr("viewBox", "0 0 " + width + " " + height);
 
+
 var path = d3.geo.path()
     .projection(projection);
 
 // COLORS
 // define color scale
-var colorScale = d3.scale.linear()
+var colorScale = d3.scale.quantile()
            .domain(d3.extent(v))
-           .interpolate(d3.interpolateHcl)
-           .range(["#D0D8E3", "#386590"]);
+           //.interpolate(d3.interpolateHcl)
+           //.range(["#D0D8E3", "#386590"]);
+           //.range(["#E4E9F0", "#214B73"]);
+           .range(['#eff3ff','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'])
+      
+
+
 
 // add grey color if no values
 var color = function(i){ 
@@ -220,8 +226,9 @@ function drawProvinces(error, cn) {
         .attr("fill", function(d) { 
             return color(umap[d.properties.name]);
         })
+        //.style("opacity", .7) 
         .attr("stroke", "white")
-        .attr("stroke-width", "0.5")
+        .attr("stroke-width", "0.7")
         .call(d3.helper.tooltip(
             function(d, i){
               return "<b>"+d.properties.name +"</b>"+ "<br/>"+d3.round(umap[d.properties.name],2) +"%";
