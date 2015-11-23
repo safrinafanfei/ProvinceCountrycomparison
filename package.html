@@ -10,25 +10,34 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<link href="packagestyle.css" type="text/css" rel="stylesheet" media="screen"> 
 	<script src="package.js"></script>
+	<link rel="stylesheet" type="text/css" href="pagePiling.js-master/jquery.pagepiling.css" />
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="pagePiling.js-master/jquery.pagepiling.js"></script>
 </head>
 <body>
-<header>
-		<div class = "head">
-			<h2> If China's provinces were countries...</h2>
-			<h3> Produced by Fan Fei <span id="signature">
-			<img src="PIC/signature2.png" alt="signature" height="80" width="80" style="margin: -50px -0px"></span></h3>
-		</div>
+		<div id="pagepiling">
 
-</header>
+			<div class ="section" id="head">
+				<h2> If China's provinces were countries...</h2>
+				<h3> Produced by Fan Fei <span id="signature">
+				<img src="PIC/signature2.png" alt="signature" height="80" width="80" style="margin: -50px -0px"></span></h3>
+			</div>
 
-	<div class="map">
-		<iframe class="unemployment" src="./unemployment/unemployment.html" frameborder="0"></iframe>
-	</div>
-
-	<div class="map">
-		<iframe class="gdpcap" src="./gdpcap/gdpcap.html" frameborder="0"></iframe>
-	</div>
 		
+			<div class="section" id="section1">
+				<iframe class="gdpcap" src="./gdpcap/gdpcap.html" frameborder="0"></iframe>
+			</div>
+
+			<div class="section" id="section2">
+				<iframe class="unemployment" src="./unemployment/unemployment.html" frameborder="0"></iframe>
+			</div>
+
+			<div class="section" id="section3">
+				<iframe class="lifeexpect" src="./lifeexpect/lifeexpect.html" frameborder="0"></iframe>
+			</div>
+		
+		</div>
 
 
 

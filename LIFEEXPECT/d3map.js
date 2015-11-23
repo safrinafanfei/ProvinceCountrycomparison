@@ -14,40 +14,41 @@ var width = 800,
 
 // data goes here
 var data=[
-  ["Anhui",3.89],
-  ["Beijing",1.20],
-  ["Chongqing",3.50],
-  ["Fujian",3.38],
-  ["Gansu",2.31],
-  ["Guangdong",2.55],
-  ["Guangxi",3.74],
-  ["Guizhou",3.89],
-  ["Hainan",2.25],
-  ["Hebei",3.59],
-  ["Heilongjiang",4.59],
-  ["Henan",3.58],
-  ["Hubei",3.72],
-  ["Hunan",4.12],
-  ["Inner Mongol",4.04],
-  ["Jiangsu",3.01],
-  ["Jiangxi",3.27],
-  ["Jilin",3.57],
-  ["Liaoning",3.55],
-  ["Ningxia",4.15],
-  ["Qinghai",3.26],
-  ["Shaanxi",3.45],
-  ["Shandong",3.35],
-  ["Shanghai",4.21],
-  ["Shanxi",3.40],
-  ["Sichuan",4.15],
-  ["Tianjin",3.57],
-  ["Xizang",3.29],
-  ["Xinjiang",3.48],
-  ["Yunnan",3.88],
-  ["Zhejiang",2.99]
+  ["Beijing",80.18],
+  ["Tianjin",78.89],
+  ["Hebei",74.97],
+  ["Shaanxi",74.92],
+  ["Inner Mongol",74.44],
+  ["Liaoning",76.38],
+  ["Jilin",76.18],
+  ["Heilongjiang",75.98],
+  ["Shanghai",80.26],
+  ["Jiangsu",76.63],
+  ["Zhejiang",77.73],
+  ["Anhui",75.08],
+  ["Fujian",75.76],
+  ["Jiangxi",74.33],
+  ["Shandong",76.46],
+  ["Henan",74.57],
+  ["Hubei",74.87],
+  ["Hunan",74.7],
+  ["Guangdong",76.49],
+  ["Guangxi",75.11],
+  ["Hainan",76.3],
+  ["Chongqing",75.7],
+  ["Sichuan",74.75],
+  ["Guizhou",71.1],
+  ["Yunnan",69.54],
+  ["Xizang",68.17],
+  ["Shanxi",74.68],
+  ["Gansu",72.23],
+  ["Qinghai",69.96],
+  ["Ningxia",73.38],
+  ["Xinjiang",72.35]
 ];
-var title = "2014 Unemployment Rate(%)";
-var desc = "Source: China Statistical Information and Consultancy Centre (CSICC)";
+
+var title = "2010 Life Expectancy(Y)";
+var desc = "Source: National Bureau of Statistics";
 var credits='';var units='';
 
 // parse data properly
@@ -86,8 +87,7 @@ var colorScale = d3.scale.quantile()
            //.interpolate(d3.interpolateHcl)
            //.range(["#D0D8E3", "#386590"]);
            //.range(["#E4E9F0", "#214B73"]);
-           .range(['#eff3ff','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'])
-           
+           .range(['#f2f0f7','#dadaeb','#bcbddc','#9e9ac8','#807dba','#6a51a3','#4a1486'])
       
 
 
