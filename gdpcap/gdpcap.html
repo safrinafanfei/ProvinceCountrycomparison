@@ -26,15 +26,25 @@
         
         .provinceicon{
           position: fixed;
-          left: 141px;
-          top: 164px;
-          width: 300px;
+          left: 0px;
+          top: 50px;
+          width: 200px;
         }
 
-        iframe{
-          margin:0 0 0 500px;
-          width:100%;
+        .ctree{
+          float:left;
+          margin:10px 0 0 50px;
+          width:40%;
+          transform:scale(0.7,0.7);
+        }
+
+        .chart{
+          float:left;
+
+          transform:scale(0.7,0.7);
+          width: 50%;
           height:800px;
+          scrolling:no;
         }
 
         @font-face {
@@ -99,8 +109,8 @@
         <img id="25_1" class="provinceicon" src="../PIC/25.svg"></img>
         <iframe id="25_2" class="ctree" src="../collapsibletree/25.html" frameborder="0"></iframe>
         <img id="26_1" class="provinceicon" src="../PIC/26.svg"></img>
-        <iframe id="26_2" class="ctree" src="../collapsibletree/26.html" frameborder="0"></iframe>
-        <iframe id="26_3" class="chart" src="../line_chart/unemploymentrate_liaoning.html" frameborder="0"></iframe>
+        <iframe id="26_2" class="ctree" src="../collapsibletree/26.html" frameborder="0" scrolling="no"></iframe>
+        <iframe id="26_3" class="chart" src="../line_chart/unemploymentrate_liaoning.html" scrolling="no" frameborder="0"></iframe>
         <img id="27_1" class="provinceicon" src="../PIC/27.svg"></img>
         <iframe id="27_2" class="ctree" src="../collapsibletree/27.html" frameborder="0"></iframe>
         <img id="28_1" class="provinceicon" src="../PIC/28.svg"></img>
@@ -117,6 +127,7 @@
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script src="//d3js.org/queue.v1.min.js"></script>
     <script src="//d3js.org/topojson.v1.min.js"></script>
+
 
     <script src="d3map.js"></script>
     <script src="d3tooltip.js"></script>

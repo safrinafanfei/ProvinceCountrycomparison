@@ -263,7 +263,6 @@ function provinceOnclick() {
     for (var i = 0; i < 31 /* total province count */; i++){
         (function registerProvinceClicks(index){
             $('#' + index).click(function(){
-
                 // Show the corresponding province icons.
                 $('#' + index + '_1').toggle();
                 //show the corresponding province tree. 
@@ -275,7 +274,7 @@ function provinceOnclick() {
                     // Enlarge this province.
                     $(this).data('enlarged', true);
                     $(this).css('opacity', 0.5);
-                    $(this).css({top: 1000, left: 200, position:'absolute'});
+                    $(this).css({top: 0, left: 200, position:'absolute'});
                     $('.province').not(this).hide();
                     provinceAnimation(this, true);
                     $('.caption').hide();
