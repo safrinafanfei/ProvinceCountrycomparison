@@ -1,65 +1,12 @@
-<!DOCTYPE html>
-<!-- To do: add grid@@@@@@@@@@@!!!!!!!!!!!!!!!!! -->
-<html>
-<head>
-    <meta charset="utf-8">
-    <title></title>
-    <style>
-
-    body {
-      font: 10px sans-serif;
-    }
-
-    .axis path,
-    .axis line {
-      fill: none;
-      stroke: #cccccc;
-      stroke-width: 2;
-      shape-rendering: crispEdges;
-      opacity:0.3;
-
-    }
-
-
-    .y.axis line{
-      stroke:#777;
-      stroke-dasharray:2,2;
-      opacity: 0.3;
-    }
-
-
-    .line {
-      fill: none;
-      stroke-width: 3px;
-      stroke-opacity:.75;
-
-    }
-
-    .legend {
-      fill: black;
-      display: block;
-    }
-
-    line.horizonalGrid{
-      fill : none;
-      shape-rendering : crispEdges;
-      stroke : black;
-      stroke-width : 1.5px;
-      } 
-
-    </style>
-</head>
-<body>
-
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script type="text/javascript">
+function makeCSV(provinceName) {
+    var PROVINCE_NAME = provinceName;
 
     var CSV_INPUT = '../processed/nations.csv';
-    var PROVINCE_NAME = 'Shanghai';
     var START_YEAR_NUMBER = 1996;
     var END_YEAR_NUMBER = 2013;
 
     var parseDate = d3.time.format("%Y").parse;
+    var END_YEAR_DATE = parseDate('' + END_YEAR_NUMBER);
 
     var margin = {top:50, right:0, bottom:70, left:70},
         width  = 300 + margin.left + margin.right,
@@ -227,24 +174,22 @@
 
     function getProvinceData(provinceName, callback) {
       d3.csv(CSV_INPUT, function(error, data) {
+
+        data = data.filter(function(d) {
+          var dataExists = d.year && d.unem && d.country;
+
+          // Skip unmatched year
+          return dataExists && +d.year <= END_YEAR_NUMBER && +d.year >= START_YEAR_NUMBER;
+        });
+
         var provinces = {}
         var countries = {}
         var mediansData = []
         var yearToCountries = {}
         data.forEach(function(d) {
 
-          if (!d.year || !d.unem || !d.country) {
-            // Skip undefined rows.
-            return;
-          }
-
-          if (d.year > END_YEAR_NUMBER || d.year < START_YEAR_NUMBER) {
-            // Skip unmatched year
-            return;
-          }
-
           // Process the year and value type.
-          d.year = +d.year;
+          d.year = parseDate(d.year);
           d.unem = +d.unem;
 
           // Process median data. 
@@ -309,10 +254,10 @@
       var singleProvince = provinces[provinceName];
       var closestCountryIndex = findClosestInCountries(
           provinces[provinceName].filter(function(obj){
-            return obj.year === END_YEAR_NUMBER;
+            return obj.year.getYear() === END_YEAR_DATE.getYear();
           })[0].rate,
-          yearToCountries[END_YEAR_NUMBER]);
-      var closestCountryName = yearToCountries[END_YEAR_NUMBER][closestCountryIndex].country;
+          yearToCountries[END_YEAR_DATE]);
+      var closestCountryName = yearToCountries[END_YEAR_DATE][closestCountryIndex].country;
 
       finalData.push({
         name: 'Closest Country: ' + closestCountryName,
@@ -327,9 +272,4 @@
 
 /* create grid*/
 //Draw a grid
-
-
-
-    </script>
-</body>
-</html>
+}
