@@ -1,65 +1,12 @@
-<!DOCTYPE html>
-<!-- To do: add grid@@@@@@@@@@@!!!!!!!!!!!!!!!!! -->
-<html>
-<head>
-    <meta charset="utf-8">
-    <title></title>
-    <style>
+function makeCSV(provinceName) {
+    var PROVINCE_NAME = provinceName;
 
-    body {
-      font: 10px sans-serif;
-    }
-
-    .axis path,
-    .axis line {
-      fill: none;
-      stroke: #cccccc;
-      stroke-width: 2;
-      shape-rendering: crispEdges;
-      opacity:0.3;
-
-    }
-
-
-    .y.axis line{
-      stroke:#777;
-      stroke-dasharray:2,2;
-      opacity: 0.3;
-    }
-
-
-    .line {
-      fill: none;
-      stroke-width: 3px;
-      stroke-opacity:.75;
-
-    }
-
-    .legend {
-      fill: black;
-      display: block;
-    }
-
-    line.horizonalGrid{
-      fill : none;
-      shape-rendering : crispEdges;
-      stroke : black;
-      stroke-width : 1.5px;
-      } 
-
-    </style>
-</head>
-<body>
-
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script type="text/javascript">
-
-    var CSV_INPUT = '../processed/nations.csv';
-    var PROVINCE_NAME = 'Shanghai';
+    var CSV_INPUT = 'data/nations.csv';
     var START_YEAR_NUMBER = 1996;
-    var END_YEAR_NUMBER = 2013;
+    var END_YEAR_NUMBER = 2014;
 
     var parseDate = d3.time.format("%Y").parse;
+    var END_YEAR_DATE = parseDate('' + END_YEAR_NUMBER);
 
     var margin = {top:50, right:0, bottom:70, left:70},
         width  = 300 + margin.left + margin.right,
@@ -88,7 +35,7 @@
     var line = d3.svg.line()
         .interpolate("basis")
         .x(function(d) { return x(d.year); })
-        .y(function(d) { return y(d.rate); });
+        .y(function(d) { return y(d.gdp_pc); });
 
 
     var svg = d3.select("body").append("svg")
@@ -104,8 +51,8 @@
         return d.year;
       }));
       y.domain([
-          d3.min(countryData, function(c) { return d3.min(c.values, function(v) { return v.rate; }); }),
-          d3.max(countryData, function(c) { return d3.max(c.values, function(v) { return v.rate; }); })
+          d3.min(countryData, function(c) { return d3.min(c.values, function(v) { return v.gdp_pc; }); }),
+          d3.max(countryData, function(c) { return d3.max(c.values, function(v) { return v.gdp_pc; }); })
       ])
       
       var gx = svg.append("g")
@@ -122,7 +69,7 @@
           .attr("y", 6)
           .attr("dy", ".71em")
           .style("text-anchor", "end")
-          .text("Unemployment Rate (%)")
+          .text("GDP per capita (Current USD$)")
           .attr("transform", "rotate(-90),translate(-10,-30)");      
 
 
@@ -145,7 +92,7 @@
       country.append("text")
           .datum(function(d) { return {name: d.name, value: d.values[d.values.length-1]}; })
           .attr("transform", function(d) { 
-              return "translate(" + x(d.value.year) + "," + y(d.value.rate) + ")";
+              return "translate(" + x(d.value.year) + "," + y(d.value.gdp_pc) + ")";
           })
           .attr("x", "4")
           .attr("dy", ".35em")
@@ -227,32 +174,30 @@
 
     function getProvinceData(provinceName, callback) {
       d3.csv(CSV_INPUT, function(error, data) {
+
+        data = data.filter(function(d) {
+          var dataExists = d.year && d.gdp_pc && d.country;
+
+          // Skip unmatched year
+          return dataExists && +d.year <= END_YEAR_NUMBER && +d.year >= START_YEAR_NUMBER;
+        });
+
         var provinces = {}
         var countries = {}
         var mediansData = []
         var yearToCountries = {}
         data.forEach(function(d) {
 
-          if (!d.year || !d.unem || !d.country) {
-            // Skip undefined rows.
-            return;
-          }
-
-          if (d.year > END_YEAR_NUMBER || d.year < START_YEAR_NUMBER) {
-            // Skip unmatched year
-            return;
-          }
-
           // Process the year and value type.
-          d.year = +d.year;
-          d.unem = +d.unem;
+          d.year = parseDate(d.year);
+          d.gdp_pc = +d.gdp_pc;
 
           // Process median data. 
           // Note that value field name should be 'rate'.
           if (!d.iso2c && d.country === 'median') {
             mediansData.push({
               year: d.year,
-              rate: d.unem
+              gdp_pc: d.gdp_pc
             });
           }
 
@@ -263,7 +208,7 @@
             if (d.year in yearToCountries) {
               yearToCountries[d.year].push({
                 country: d.country,
-                rate: d.unem
+                gdp_pc: d.gdp_pc
               });
             } else {
               yearToCountries[d.year] = []
@@ -273,7 +218,7 @@
             if (d.country in countries) {
               countries[d.country].push({
                 year: d.year,
-                rate: d.unem
+                gdp_pc: d.gdp_pc
               });
             } else {
               countries[d.country] = []
@@ -283,7 +228,7 @@
             if (d.country in provinces) {
               provinces[d.country].push({
                 year: d.year,
-                rate: d.unem
+                gdp_pc: d.gdp_pc
               });
             } else {
               provinces[d.country] = []
@@ -305,14 +250,14 @@
         values: provinces[provinceName]
       });
 
-      // Put in year 2013 the nearest country's every year's data into finalData.
+      // Put in year 2014 the nearest country's every year's data into finalData.
       var singleProvince = provinces[provinceName];
       var closestCountryIndex = findClosestInCountries(
           provinces[provinceName].filter(function(obj){
-            return obj.year === END_YEAR_NUMBER;
+            return obj.year.getYear() === END_YEAR_DATE.getYear();
           })[0].rate,
-          yearToCountries[END_YEAR_NUMBER]);
-      var closestCountryName = yearToCountries[END_YEAR_NUMBER][closestCountryIndex].country;
+          yearToCountries[END_YEAR_DATE]);
+      var closestCountryName = yearToCountries[END_YEAR_DATE][closestCountryIndex].country;
 
       finalData.push({
         name: 'Closest Country: ' + closestCountryName,
@@ -324,12 +269,4 @@
       callback(data, finalData);
     });
   };
-
-/* create grid*/
-//Draw a grid
-
-
-
-    </script>
-</body>
-</html>
+}
