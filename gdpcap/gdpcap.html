@@ -157,6 +157,13 @@
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script src="//d3js.org/queue.v1.min.js"></script>
     <script src="//d3js.org/topojson.v1.min.js"></script>
+    <script src="tree/data/csv_to_json.js"></script>
+    <script>
+      var sampleCsvFileName = 'tree/data/0.csv';
+      csv2jsonForGdp(sampleCsvFileName, function(json) {
+        console.log(json);
+      });
+    </script>
 
 
     <script src="d3map.js"></script>
