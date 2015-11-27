@@ -160,10 +160,10 @@ function makeCSV(provinceName) {
       if (arr.length < 1) {
         return -1;
       }
-      var diff = Math.abs(num - arr[0].rate);
+      var diff = Math.abs(num - arr[0]);
       resultIndex = 0;
       for (var index in arr) {
-          var newdiff = Math.abs(num - arr[index].rate);
+          var newdiff = Math.abs(num - arr[index]);
           if (newdiff < diff) {
             diff = newdiff;
             resultIndex = index;
@@ -178,7 +178,7 @@ function makeCSV(provinceName) {
         data = data.filter(function(d) {
           var dataExists = d.year && d.gdp_pc && d.country;
 
-          // Skip unmatched year
+          // Skip unmatched year and data that do not exist.
           return dataExists && +d.year <= END_YEAR_NUMBER && +d.year >= START_YEAR_NUMBER;
         });
 
@@ -255,8 +255,10 @@ function makeCSV(provinceName) {
       var closestCountryIndex = findClosestInCountries(
           provinces[provinceName].filter(function(obj){
             return obj.year.getYear() === END_YEAR_DATE.getYear();
-          })[0].rate,
-          yearToCountries[END_YEAR_DATE]);
+          })[0].gdp_pc,
+          yearToCountries[END_YEAR_DATE].map(function(item) {
+            return item.gdp_pc;
+          }));
       var closestCountryName = yearToCountries[END_YEAR_DATE][closestCountryIndex].country;
 
       finalData.push({

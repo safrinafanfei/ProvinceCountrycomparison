@@ -160,10 +160,10 @@ function makeCSV(provinceName) {
       if (arr.length < 1) {
         return -1;
       }
-      var diff = Math.abs(num - arr[0].rate);
+      var diff = Math.abs(num - arr[0]);
       resultIndex = 0;
       for (var index in arr) {
-          var newdiff = Math.abs(num - arr[index].rate);
+          var newdiff = Math.abs(num - arr[index]);
           if (newdiff < diff) {
             diff = newdiff;
             resultIndex = index;
@@ -256,7 +256,9 @@ function makeCSV(provinceName) {
           provinces[provinceName].filter(function(obj){
             return obj.year.getYear() === END_YEAR_DATE.getYear();
           })[0].rate,
-          yearToCountries[END_YEAR_DATE]);
+          yearToCountries[END_YEAR_DATE].map(function(item) {
+            return item.rate;
+          }));
       var closestCountryName = yearToCountries[END_YEAR_DATE][closestCountryIndex].country;
 
       finalData.push({
