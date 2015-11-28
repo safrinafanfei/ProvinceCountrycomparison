@@ -53,10 +53,8 @@ var credits='';var units='';
 // parse data properly
 var umap = []
 data.map(function(d) {umap[d[0]]=Number(d[1])});
-console.log(umap);
 
 var v = Object.keys(umap).map(function(k){return umap[k]})
-// console.log(v);
 
 // LOAD DATA
 queue()
@@ -210,7 +208,6 @@ function drawProvinces(error, cn) {
     //     codes.push(topojson.feature(cn, cn.objects.provinces).features[i].properties.name)
         
     // };
-    // console.log(codes);
 
     svg.append("g")
         .attr("class", "map")

@@ -1,4 +1,4 @@
-function makeCSV(provinceName) {
+function makeLineChart(provinceName) {
     var PROVINCE_NAME = provinceName;
 
     var CSV_INPUT = '../processed/nations.csv';
@@ -177,9 +177,9 @@ function makeCSV(provinceName) {
 
         data = data.filter(function(d) {
           var dataExists = d.year && d.unem && d.country;
-
+          var dataValid = !isNaN(+d.unem);
           // Skip unmatched year
-          return dataExists && +d.year <= END_YEAR_NUMBER && +d.year >= START_YEAR_NUMBER;
+          return dataExists && dataValid && +d.year <= END_YEAR_NUMBER && +d.year >= START_YEAR_NUMBER;
         });
 
         var provinces = {}
@@ -253,7 +253,7 @@ function makeCSV(provinceName) {
       // Put in year 2013 the nearest country's every year's data into finalData.
       var singleProvince = provinces[provinceName];
       var closestCountryIndex = findClosestInCountries(
-          provinces[provinceName].filter(function(obj){
+          singleProvince.filter(function(obj){
             return obj.year.getYear() === END_YEAR_DATE.getYear();
           })[0].rate,
           yearToCountries[END_YEAR_DATE].map(function(item) {
