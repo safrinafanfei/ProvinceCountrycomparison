@@ -48,6 +48,29 @@ iframe{
 #head{
 	background-color: white;
 	margin-bottom: 250px;
+	z-index: 2;
+
+}
+
+p{
+	margin-top: 50px;
+	margin-right: 50px;
+	margin-left: 350px;
+	font-size: 18px;
+	z-index: 2;
+	background-color: rgba(255,255,255,0.8);
+	padding:30px;
+
+
+}
+
+.bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0.2;
 }
 
 
