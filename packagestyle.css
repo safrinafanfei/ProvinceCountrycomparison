@@ -1,7 +1,7 @@
 h2{font-family:serif;
 		font-size: 2.5em;
 		font-weight: lighter;
-		margin: 250px 100px 10px 550px;
+		margin: 250px 100px 10px 500px;
 		margin-top: 250px;
 	}
 
@@ -29,6 +29,10 @@ iframe{
 	height:800px;
 }
 
+.section{
+	opacity: 0;
+}
+
 .gdpcap{
 	background-color:#bdbdbd;
 }
@@ -45,4 +49,5 @@ iframe{
 	background-color: white;
 	margin-bottom: 250px;
 }
+
 

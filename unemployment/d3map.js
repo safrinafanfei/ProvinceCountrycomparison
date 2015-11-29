@@ -276,7 +276,6 @@ function provinceOnclick() {
                     // Enlarge this province.
                     $(this).data('enlarged', true);
                     $(this).css('opacity', 0.5);
-                    $(this).css({top: 1000, left: 200, position:'absolute'});
                     $('.province').not(this).hide();
                     provinceAnimation(this, true);
                     $('.caption').hide();
@@ -304,7 +303,7 @@ function provinceAnimation(provinceElement, zoomin, completeCallback) {
 
 
     $(provinceElement).animate(
-        { scale: (zoomin ? 1.5 : 1)},
+        { scale: (zoomin ? 2 : 1)},
         { 
             duration: 1000,
             step: function(now, fx) {
