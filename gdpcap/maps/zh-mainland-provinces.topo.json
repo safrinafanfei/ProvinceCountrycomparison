@@ -87,7 +87,7 @@
             "gns_level": 1,
             "gns_lang": "zho",
             "gns_adm1": "CH15",
-            "gns_region": null
+            "gns_region": null,
           }
         },
         {
@@ -235,6 +235,7 @@
             "gns_lang": "zho",
             "gns_adm1": "CH16",
             "gns_region": null
+
           }
         },
         {
