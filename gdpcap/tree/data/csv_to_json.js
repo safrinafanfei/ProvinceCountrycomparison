@@ -1,11 +1,13 @@
-function csv2json(csvFileName, valueFieldName, callback) {
+function csv2json(csvFileName, countryValueFieldName, provinceValueFieldName, callback) {
   d3.csv(csvFileName, function(error, data) {
     var returnObj = {'parent': 'null', 'children': []};
     data.forEach(function(d) {
       returnObj['name'] = d.province;
+      returnObj['parent'] = 'null';
+      returnObj['value'] = d[provinceValueFieldName];
       returnObj['children'].push({
         'name': d.country,
-        'value': d[valueFieldName],
+        'value': d[countryValueFieldName],
         'parent': 'Top Level',
         'icon': '../PIC/FLAGS/' + d.country + '.png'
       });
@@ -15,9 +17,5 @@ function csv2json(csvFileName, valueFieldName, callback) {
 }
 
 function csv2jsonForGdp(csvFileName, callback) {
-  csv2json(csvFileName, 'gdp_pc', callback);
-}
-
-function csv2jsonForUnem(csvFileName, callback) {
-  csv2json(csvFileName, 'unem', callback);
+  csv2json(csvFileName, 'country_gdp_pc', 'province_gpd_pc', callback);
 }
