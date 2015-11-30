@@ -12,7 +12,7 @@ function csv2json(csvFileName, countryValueFieldName, provinceValueFieldName, ca
         'icon': '../PIC/FLAGS/' + d.country + '.png'
       });
     });
-    callback(returnObj);
+    callback([returnObj]);
   });
 }
 
