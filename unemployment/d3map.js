@@ -1,8 +1,4 @@
 
-// Hide all provinceicon. ctree, linechart
-$('.provinceicon').hide();
-$('.ctree').hide();
-$('.chart').hide();
 
 // Jquery frame rate
 jQuery.fx.interval = 9;
@@ -275,6 +271,9 @@ function provinceOnclick() {
                 if(!$(this).data('enlarged')) {
                     // Enlarge this province.
                     $(this).data('enlarged', true);
+
+                    // Store this path's bbox.
+                    $(this).data('bBox', this.getBBox());
                     $(this).css('opacity', 0.5);
                     $('.province').not(this).hide();
                     provinceAnimation(this, true);
@@ -298,9 +297,14 @@ function provinceOnclick() {
 
 function provinceAnimation(provinceElement, zoomin, completeCallback) {
     var box = provinceElement.getBBox();
+    var oldBox = $(provinceElement).data('bBox');
+    var pinnedPos = {
+      x : -oldBox.x + 120 + 'px',
+      y : -oldBox.y + 220 + 'px'
+    };
+
     var cx = box.x + box.width/2;
     var cy = box.y + box.height/2;
-
 
     $(provinceElement).animate(
         { scale: (zoomin ? 2 : 1)},
@@ -311,7 +315,16 @@ function provinceAnimation(provinceElement, zoomin, completeCallback) {
                 $(provinceElement).attr(
                     "transform", "translate(" + cx + " " + cy + ") scale(" + scaleVal + ") translate(" + (-cx) + " " + (-cy) + ")");
             },
-            complete: completeCallback 
+            complete: completeCallback
         }
     );
+
+    if (zoomin) {
+      // Move to the left side. Using css transform.
+      $(provinceElement).css(
+        'transform',
+        'translate(' + pinnedPos.x + ', ' +  pinnedPos.y + ')');
+    } else {
+      $(provinceElement).css('transform', '');
+    }
 }
