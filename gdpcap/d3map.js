@@ -271,6 +271,7 @@ function provinceOnclick() {
                 $('#'+index + '_2').toggle();
                 //show the corresponding province chart.
                 $('#'+index + '_3').toggle();
+                
 
                 if(!$(this).data('enlarged')) {
                     // Enlarge this province.
@@ -280,6 +281,8 @@ function provinceOnclick() {
                     provinceAnimation(this, true);
                     $('.caption').hide();
                     $('.info').hide();
+                    $('.countrylabels').hide();
+
                 } else {
                     // Zoom out to whole map.
                     $(this).data('enlarged', false); 
@@ -289,6 +292,7 @@ function provinceOnclick() {
                         $('.province').show();
                         $('.caption').show();
                         $('.info').show();
+                        $('.countrylabels').show();
                     });
                 }
             });
