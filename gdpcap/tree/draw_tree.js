@@ -8,7 +8,7 @@ var indexToProvince = {
 	6: 'Fujian',
 	7: 'Anhui',
 	8: 'Guangdong',
-	9: 'Xizang',
+	9: 'Tibet',
 	10: 'Xinjiang',
 	11: 'Hainan',
 	12: 'Ningxia',
@@ -28,7 +28,7 @@ var indexToProvince = {
 	26: 'Shanghai',
 	27: 'Zhejiang',
 	28: 'Jilin',
-	29: 'Mongolia',
+	29: 'InnerMongolia',
 	30: 'Heilongjiang'
 }
 
