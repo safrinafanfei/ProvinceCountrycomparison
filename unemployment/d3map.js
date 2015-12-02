@@ -279,6 +279,8 @@ function provinceOnclick() {
                     provinceAnimation(this, true);
                     $('.caption').hide();
                     $('.info').hide();
+                    $('.countrylabels').hide();
+                    $('p').hide();
                 } else {
                     // Zoom out to whole map.
                     $(this).data('enlarged', false); 
@@ -288,6 +290,8 @@ function provinceOnclick() {
                         $('.province').show();
                         $('.caption').show();
                         $('.info').show();
+                        $('.countrylabels').show();
+                        $('p').show();
                     });
                 }
             });
