@@ -32,6 +32,13 @@ var indexToProvince = {
 	30: 'Heilongjiang'
 }
 
+// Have a default img.
+$("svg > g >img")
+  .error(function() {
+    console.log('load default country pic.');
+  })
+  .attr( "src", "../../pic/flags/default.png" );
+
 function drawTree(provinceName) {
 	var csvFileName = 'data/binded/gdpcap_' + provinceName + '.csv';
 	csv2jsonForGdp(csvFileName, function(treeData) {
