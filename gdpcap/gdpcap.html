@@ -32,19 +32,22 @@
         }
 
         .ctree{
-          float:left;
-          margin:10px 0 0 50px;
-          width:40%;
-          transform:scale(0.7,0.7);
+            position: relative;
+            width: 600px;
+            left: 500px;
+            height: 350px;
         }
 
         .chart{
-          float:left;
+            position: relative;
+            left: 500px;
+            width: 600px;
+            height: 400px;
+        }
 
-          transform:scale(0.7,0.7);
-          width: 50%;
-          height:800px;
-          scrolling:no;
+        iframe {
+            overflow:hidden;
+            display: block;
         }
 
         @font-face {
@@ -73,7 +76,7 @@
           position:absolute;
         }
 
-/*  css labels*/ 
+        /* css labels for closest country for each province in the map. */ 
         #inner{
           top:200px;
           left:425px;
@@ -278,21 +281,6 @@
     /*        done css labels
 */
 
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
    
     </style>
   </head>
@@ -332,18 +320,6 @@
     <h4 class="country" id="tianjin">Slovak Republic</h4>
     <h4 class="country" id="shanghai">Slovak Republic</h4>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
     <div id="provinceicons">
         <img id="0_1" class="provinceicon" src="../PIC/0.svg" style="display:none"></img>
