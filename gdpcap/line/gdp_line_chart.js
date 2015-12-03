@@ -177,9 +177,9 @@ function makeCSV(provinceName) {
 
         data = data.filter(function(d) {
           var dataExists = d.year && d.gdp_pc && d.country;
-
-          // Skip unmatched year and data that do not exist.
-          return dataExists && +d.year <= END_YEAR_NUMBER && +d.year >= START_YEAR_NUMBER;
+          var dataValid = !isNaN(+d.gdp_pc);
+          // Skip unmatched year
+          return dataExists && dataValid && +d.year <= END_YEAR_NUMBER && +d.year >= START_YEAR_NUMBER;
         });
 
         var provinces = {}
