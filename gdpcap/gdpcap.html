@@ -25,9 +25,10 @@
         }
 
         #map {
+          z-index: -100;
           position: fixed;
-          left: -50px;
-          top: 50px;
+          left: 0px;
+          top: 0px;
         }        
         
         .provinceicon {
@@ -83,6 +84,9 @@
         }
 
         /* css labels for closest country for each province in the map. */ 
+        .countrylabels {
+          z-index: 100;
+        }
         #inner{
           top:200px;
           left:425px;
