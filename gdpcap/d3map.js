@@ -35,7 +35,7 @@ var data=[
   ["Shanxi",5710.00],
   ["Sichuan",5940.00],
   ["Tianjin",18030.00],
-  ["Xizang",4760.00],
+  ["Tibet",4760.00],
   ["Xinjiang",6350.00],
   ["Yunnan",4440.00],
   ["Zhejiang",11430.00]
@@ -47,7 +47,6 @@ var credits='';var units='';
 // parse data properly
 var umap = []
 data.map(function(d) {umap[d[0]]=Number(d[1])});
-console.log(umap);
 
 var v = Object.keys(umap).map(function(k){return umap[k]})
 // console.log(v);

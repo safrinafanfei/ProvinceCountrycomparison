@@ -39,7 +39,7 @@ var data=[
   ["Sichuan",74.75],
   ["Guizhou",71.1],
   ["Yunnan",69.54],
-  ["Xizang",68.17],
+  ["Tibet",68.17],
   ["Shanxi",74.68],
   ["Gansu",72.23],
   ["Qinghai",69.96],

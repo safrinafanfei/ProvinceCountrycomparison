@@ -37,7 +37,7 @@ var data=[
   ["Shanxi",3.40],
   ["Sichuan",4.15],
   ["Tianjin",3.57],
-  ["Xizang",3.29],
+  ["Tibet",3.29],
   ["Xinjiang",3.48],
   ["Yunnan",3.88],
   ["Zhejiang",2.99]
