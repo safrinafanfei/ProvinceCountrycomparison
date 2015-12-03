@@ -9,7 +9,7 @@ function csv2json(csvFileName, countryValueFieldName, provinceValueFieldName, ca
         'name': d.country,
         'value': d[countryValueFieldName],
         'parent': 'Top Level',
-        'icon': '../PIC/FLAGS/' + d.country + '.png'
+        'icon': '../../../pic/flags/' + d.country + '.png'
       });
     });
     callback([returnObj]);
