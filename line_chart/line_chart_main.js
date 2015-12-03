@@ -94,8 +94,8 @@ function makeLineChart(provinceName) {
           .attr("transform", function(d) { 
               return "translate(" + x(d.value.year) + "," + y(d.value.rate) + ")";
           })
-          .attr("x", "4")
-          .attr("dy", ".35em")
+          .attr("x", "-200")
+          .attr("dy", "1em")
           .attr('class', 'legend')
           .text(function(d) { return d.name; });
 
