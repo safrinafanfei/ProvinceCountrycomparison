@@ -32,13 +32,6 @@ var indexToProvince = {
 	30: 'Heilongjiang'
 }
 
-// Have a default img.
-$("svg > g >img")
-  .error(function() {
-    console.log('load default country pic.');
-  })
-  .attr( "src", "../../pic/flags/default.png" );
-
 function drawTree(provinceName) {
 	var csvFileName = 'data/binded/gdpcap_' + provinceName + '.csv';
 	csv2jsonForGdp(csvFileName, function(treeData) {
@@ -101,12 +94,12 @@ function drawTree(provinceName) {
 			  .style("fill-opacity", 1e-6);
 
 		// append flags
-			nodeEnter.append("image")
-		      .attr("xlink:href", function(d) { return d.icon; })
-		      .attr("x", "160px")
-		      .attr("y", "-12px")
-		      .attr("width", "40px")
-		      .attr("height", "40px");
+			// nodeEnter.append("image")
+		 //      .attr("xlink:href", function(d) { return d.icon; })
+		 //      .attr("x", "160px")
+		 //      .attr("y", "-12px")
+		 //      .attr("width", "40px")
+		 //      .attr("height", "40px");
 
 		  // Transition nodes to their new position.
 		  var nodeUpdate = node.transition()
