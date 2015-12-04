@@ -95,7 +95,12 @@ function makeCSV(provinceName) {
               return "translate(" + x(d.value.year) + "," + y(d.value.gdp_pc) + ")";
           })
           .attr("x", "4")
-          .attr("dy", ".35em")
+          .attr("dy", function(d){
+            if (d.name.indexOf("Closest Country") >=0){
+              return "0em";
+            }else{
+              return "1.5em";
+            };})
           .attr('class', 'legend')
           .text(function(d) { return d.name; });
 

@@ -29,13 +29,14 @@ function makeLineChart(provinceName) {
         .orient("right");
 
     var setColor = d3.scale.ordinal()
-    .domain(["median", "closet", "province"])
+    .domain(["median", "closest", "province"])
     .range(['#fee5d9',"#a50f15",'#fb6a4a']);;
 
     var line = d3.svg.line()
         .interpolate("basis")
         .x(function(d) { return x(d.year); })
         .y(function(d) { return y(d.rate); });
+
 
 
     var svg = d3.select("body").append("svg")
@@ -70,6 +71,7 @@ function makeLineChart(provinceName) {
           .attr("dy", ".71em")
           .style("text-anchor", "end")
           .text("Unemployment Rate (%)")
+          .style("fill","#737373")
           .attr("transform", "rotate(-90),translate(-10,-30)");      
 
 
@@ -94,8 +96,14 @@ function makeLineChart(provinceName) {
           .attr("transform", function(d) { 
               return "translate(" + x(d.value.year) + "," + y(d.value.rate) + ")";
           })
-          .attr("x", "-200")
-          .attr("dy", "1em")
+          .attr("x", "0")
+          .attr("dy", function(d){
+            if (d.name.indexOf("Closest Country") >=0){
+              return "0em";
+            }else{
+              return "1.5em";
+            };})
+          .style('fill', '#737373')
           .attr('class', 'legend')
           .text(function(d) { return d.name; });
 
@@ -238,7 +246,7 @@ function makeLineChart(provinceName) {
 
       var finalData = [];
 
-      // Push world media's data.
+      // Push world median's data.
       finalData.push({
         name: 'median',
         values: mediansData
