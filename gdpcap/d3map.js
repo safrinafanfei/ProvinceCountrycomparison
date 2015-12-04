@@ -79,8 +79,8 @@ var colorScale = d3.scale.quantile()
            //.interpolate(d3.interpolateHcl)
            //.range(["#D0D8E3", "#386590"]);
            //.range(["#E4E9F0", "#214B73"]);
-           .range(['#fee5d9','#fcbba1','#fc9272','#fb6a4a','#ef3b2c','#cb181d','#99000d'])
-      
+           .range(['rgba(254,229,217,0.8)','rgba(252,187,161,0.8)','rgba(252,146,114,0.8)','rgba(251,106,74,0.8)','rgba(239,59,44,0.8)','rgba(203,24,29,0.8)','rgba(153,0,13,0.8)'])
+           
 // add grey color if no values
 var color = function(i){ 
     if (i==undefined) {return "grey"}

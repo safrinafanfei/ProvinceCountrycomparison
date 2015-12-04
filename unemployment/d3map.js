@@ -1,5 +1,3 @@
-
-
 // Jquery frame rate
 jQuery.fx.interval = 9;
 
@@ -82,10 +80,6 @@ var colorScale = d3.scale.quantile()
            //.range(["#E4E9F0", "#214B73"]);
            .range(['#eff3ff','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'])
            
-      
-
-
-
 // add grey color if no values
 var color = function(i){ 
     if (i==undefined) {return "grey"}
