@@ -38,7 +38,8 @@ function drawProvinces(error, cn, withDollar) {
         .attr("stroke-width", "0.7")
         .call(d3.helper.tooltip(
             function(d, i){
-              return "<b>"+d.properties.name +"</b>"+ "<br/>" + (withDollar ? '$' : '') + d3.round(umap[d.properties.name],2) +"%";
+              return "<b>"+d.properties.name +"</b>"+ "<br/>" + (withDollar ? '$' : '')
+               + d3.round(umap[d.properties.name],2) + (withDollar ? '' : '%');
             }
         ));
 }
