@@ -74,11 +74,13 @@ var path = d3.geo.path()
 // COLORS
 // define color scale
 var colorScale = d3.scale.quantile()
+  // console.log(v)
            .domain(d3.extent(v))
            //.interpolate(d3.interpolateHcl)
            //.range(["#D0D8E3", "#386590"]);
            //.range(["#E4E9F0", "#214B73"]);
            .range(['#eff3ff','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'])
+           // colorScale.quantiles();
            
 // add grey color if no values
 var color = function(i){ 
