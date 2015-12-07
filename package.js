@@ -10,6 +10,7 @@ jQuery(function($) {
         }); 
     });
 });
+
 //* end of the opening chapter
 
 //     (document).ready(function() {
