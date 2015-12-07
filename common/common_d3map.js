@@ -9,6 +9,11 @@ function drawUnemploymentMap(error, mainland) {
     provinceOnclick();
 }
 
+function drawLifeMap(error, mainland) {
+    drawProvinces(error, mainland, false /* not withDollar*/);
+    provinceOnclick();
+}
+
 // Mainland provinces
 function drawProvinces(error, cn, withDollar) {
     
