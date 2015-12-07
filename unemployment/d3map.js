@@ -40,6 +40,7 @@ var data=[
   ["Yunnan",3.88],
   ["Zhejiang",2.99]
 ];
+
 var title = "2014 Unemployment Rate(%)";
 var desc = "Source: China Statistical Information and Consultancy Centre (CSICC)";
 var credits='';var units='';
