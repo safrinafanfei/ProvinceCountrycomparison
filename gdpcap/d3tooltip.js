@@ -19,6 +19,7 @@ d3.helper.tooltip = function(accessor){
             // Crop text arbitrarily
             //tooltipDiv.style('width', function(d, i){return (tooltipText.length > 80) ? '300px' : null;})
             //    .html(tooltipText);
+            
         })
         .on('mousemove', function(d, i) {
             // Move tooltip
