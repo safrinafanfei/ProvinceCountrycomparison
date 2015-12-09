@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<!-- To do: add grid@@@@@@@@@@@!!!!!!!!!!!!!!!!! -->
-<html>
-<head>
-    <meta charset="utf-8">
-    <title></title>
-    <style>
-
-    body {
+<style>
+   body {
       font: 10px sans-serif;
     }
 
@@ -35,10 +28,10 @@
 
     }
 
-    .legend {
+    /*.legend {
       fill: black;
       display: block;
-    }
+    }*/
 
     line.horizonalGrid{
       fill : none;
@@ -53,16 +46,10 @@
       opacity:0.8;
     } 
 
+    .legend rect {
+      fill:white;
+      stroke:black;
+      opacity:0.8;
+    }
 
-    </style>
-</head>
-<body>
-
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="line_chart_main.js"></script>
-    <script src="d3.legend.js"></script>
-    <script>
-      makeLineChart('Guangxi');
-    </script>
-</body>
-</html>
+</style>
