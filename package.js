@@ -12,6 +12,15 @@ jQuery(function($) {
 });
 
 //* end of the opening chapter
+//* add preloading page
+$(document).ready(function() {
+ 
+    setTimeout(function(){
+        $('body').addClass('loaded');
+    }, 8000);
+ 
+});
+
 
 //     (document).ready(function() {
 //         $('#pagepiling').pagepiling({
@@ -90,5 +99,6 @@ $(document).ready(function() {
     });
     
 });
+
 
 
