@@ -17,7 +17,16 @@ $(document).ready(function() {
  
     setTimeout(function(){
         $('body').addClass('loaded');
-    }, 8000);
+    }, 5000);
+
+$( "#loadsub" ).fadeIn( 1000, function() {
+    $( "h1" ).fadeIn( 100, function() {
+        $( "#loadtitle" ).fadeIn( 100, function() {
+    
+  });
+    
+  });
+  });
  
 });
 
