@@ -87,22 +87,28 @@ function makeCSV(provinceName) {
           })
           .attr("d", function(d) { 
             return line(d.values);
-          });
-
-      country.append("text")
-          .datum(function(d) { return {name: d.name, value: d.values[d.values.length-1]}; })
-          .attr("transform", function(d) { 
-              return "translate(" + x(d.value.year) + "," + y(d.value.gdp_pc) + ")";
           })
-          .attr("x", "4")
-          .attr("dy", function(d){
-            if (d.name.indexOf("Closest Country") >=0){
-              return "0em";
-            }else{
-              return "1.5em";
-            };})
-          .attr('class', 'legend')
-          .text(function(d) { return d.name; });
+          .attr("data-legend",function(d) { return d.name});
+
+      legend = svg.append("g")
+          .attr("class","legend")
+          .attr("transform","translate(50,30)")
+          .style("font-size","10px")
+          .call(d3.legend)
+      // country.append("text")
+      //     .datum(function(d) { return {name: d.name, value: d.values[d.values.length-1]}; })
+      //     .attr("transform", function(d) { 
+      //         return "translate(" + x(d.value.year) + "," + y(d.value.gdp_pc) + ")";
+      //     })
+      //     .attr("x", "4")
+      //     .attr("dy", function(d){
+      //       if (d.name.indexOf("Closest Country") >=0){
+      //         return "0em";
+      //       }else{
+      //         return "1.5em";
+      //       };})
+      //     .attr('class', 'legend')
+      //     .text(function(d) { return d.name; });
 
         // /* Add 'curtain' rectangle to hide entire graph */
         // var curtain = svg.append('rect')
@@ -245,7 +251,7 @@ function makeCSV(provinceName) {
 
       // Push world media's data.
       finalData.push({
-        name: 'median',
+        name: 'World Median',
         values: mediansData
       });
 

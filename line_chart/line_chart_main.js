@@ -260,7 +260,7 @@ function makeLineChart(provinceName) {
 
       // Push world median's data.
       finalData.push({
-        name: 'median',
+        name: 'World Median',
         values: mediansData
       });
 
