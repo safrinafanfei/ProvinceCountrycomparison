@@ -32,7 +32,7 @@ d3.legend = function(g) {
         .call(function(d) { d.enter().append("text")})
         .call(function(d) { d.exit().remove()})
         .attr("y",function(d,i) { return i+"em"})
-        .attr("x","37em")
+        .attr("x","2em")
         .text(function(d) { ;return d.key})
     
     li.selectAll("circle")
@@ -40,7 +40,7 @@ d3.legend = function(g) {
         .call(function(d) { d.enter().append("circle")})
         .call(function(d) { d.exit().remove()})
         .attr("cy",function(d,i) { return i-0.25+"em"})
-        .attr("cx","35em")
+        .attr("cx","0em")
         .attr("r","0.4em")
         .style("fill",function(d) { console.log(d.value.color);return d.value.color})  
     
