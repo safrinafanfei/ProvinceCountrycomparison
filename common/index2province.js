@@ -1,4 +1,4 @@
-{
+var indexToProvince = {
 	0: 'Gansu',
 	1: 'Qinghai',
 	2: 'Guangxi',
@@ -28,6 +28,6 @@
 	26: 'Shanghai',
 	27: 'Zhejiang',
 	28: 'Jilin',
-	29: 'Mongolia',
+	29: 'Inner Mongolia',
 	30: 'Heilongjiang'
 }

@@ -79,7 +79,6 @@ function provinceOnclick() {
     for (var i = 0; i < 31 /* total province count */; i++){
         (function registerProvinceClicks(index){
             $('#' + index).click(function(){
-
                 // Show the corresponding province icons.
                 $('#' + index + '_1').toggle();
                 //show the corresponding province tree. 

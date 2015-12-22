@@ -1,4 +1,4 @@
-function makeLineChart(provinceName) {
+function makeLineChart(provinceName, parentElement) {
     var PROVINCE_NAME = provinceName;
 
     var CSV_INPUT = '../processed/nations.csv';
@@ -39,7 +39,7 @@ function makeLineChart(provinceName) {
 
 
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select(parentElement).append("svg")
         .attr("width", width + margin.left + margin.right + legendWidth)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -94,13 +94,11 @@ function makeLineChart(provinceName) {
           })
           .attr("data-legend",function(d) { return d.name});
 
-      legend = svg.append("g")
+      svg.append("g")
           .attr("class","legend")
           .attr("transform","translate(50,30)")
           .style("font-size","10px")
-          .call(d3.legend)
-
-
+          .call(d3.legend);
 
       // country.append("text")
       //     .datum(function(d) { return {name: d.name, value: d.values[d.values.length-1]}; })
@@ -143,7 +141,7 @@ function makeLineChart(provinceName) {
         setTimeout(function(){
           y.domain([0,3e6]);
           gy.call(customAxis);
-          }, 1000);
+        }, 1000);
 
         function customAxis(g) {
             g.selectAll("text")
@@ -162,8 +160,7 @@ function makeLineChart(provinceName) {
               .style('opacity', 0)
               .remove()
           });
-      // end of getProvinceData() 
-      }); 
+      }); // end of getProvinceData() 
 
       // t.select('rect.curtain')
       //   .attr('width', 0);
