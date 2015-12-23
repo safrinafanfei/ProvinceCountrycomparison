@@ -1,6 +1,8 @@
 // d3.legend.js 
 // (C) 2012 ziggy.jonsson.nyc@gmail.com
 // MIT licence
+var LBBOX_HEIGHT = 32;
+var LBBOX_WIDTH = 182;
 
 (function() {
 d3.legend = function(g) {
@@ -44,11 +46,10 @@ d3.legend = function(g) {
         .style("fill",function(d) {return d.value.color});
     
     // Reposition and resize the box
-    var lbbox = li[0][0].getBBox();  
-    lb.attr("x",(lbbox.x-legendPadding))
-        .attr("y",(lbbox.y-legendPadding))
-        .attr("height",(lbbox.height+2*legendPadding))
-        .attr("width",(lbbox.width+2*legendPadding));
+    lb.attr("x",(-4-legendPadding))
+        .attr("y",(-10-legendPadding))
+        .attr("height",(LBBOX_HEIGHT + 2 * legendPadding))
+        .attr("width",(LBBOX_WIDTH + 2 * legendPadding));
   });
   return g;
 }
