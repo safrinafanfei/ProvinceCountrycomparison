@@ -276,7 +276,32 @@
         /* done css labels */
 
 
-        /* starting line chart*/
+
+        /* starting collapsible tree. */
+        .ctree .node {
+          cursor: pointer;
+        }
+
+        .ctree .node circle {
+          fill: #fff;
+          stroke: #A00404;
+          stroke-width: 3px;
+        }
+
+        .ctree .node text {
+          font: 12px sans-serif;
+        }
+
+        .ctree .link {
+          fill: none;
+          stroke: #ccc;
+          stroke-width: 2px;
+          stroke-dasharray:2,2;
+        }        
+        /* done collapsible tree. */
+
+
+        /* starting line chart. */
         .chart {
           font: 10px sans-serif;
         }
@@ -288,7 +313,6 @@
           stroke-width: 2;
           shape-rendering: crispEdges;
           opacity:0.3;
-
         }
 
 
@@ -303,7 +327,6 @@
           fill: none;
           stroke-width: 3px;
           stroke-opacity:.75;
-
         }
 
         .chart .legend {
@@ -479,11 +502,25 @@
     <script src="../line_chart/d3.legend.js"></script>
     <script src="../common/index2province.js"></script>
     <script>
+      /* Line chart graph. */
       for (var index = 0; index < 31; index++) {
         $('#provinceicons').append(
           $('<div/>')
               .addClass('chart')
               .attr('id', index + '_3')
+              .hide()
+        );
+        makeLineChart(indexToProvince[index], $('#' + index + '_3')[0]);
+      }
+    </script>
+
+    <script>
+      /* Collapsible tree.*/
+      for (var index = 0; index < 31; index++) {
+        $('#provinceicons').append(
+          $('<div/>')
+              .addClass('ctree')
+              .attr('id', index + '_2')
               .hide()
         );
         makeLineChart(indexToProvince[index], $('#' + index + '_3')[0]);
