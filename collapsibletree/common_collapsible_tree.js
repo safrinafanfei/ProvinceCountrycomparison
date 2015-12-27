@@ -57,14 +57,6 @@ function makeTree(treeData, parentElement) {
 		  .text(function(d) { return d.name+": " + d.value + "%"; })
 		  .style("fill-opacity", 1e-6);
 
-		// append flags
-		nodeEnter.append("image")
-		  .attr("xlink:href", function(d) { return d.icon; })
-		  .attr("x", "160px")
-		  .attr("y", "-12px")
-		  .attr("width", "40px")
-		  .attr("height", "40px");
-
 		// Transition nodes to their new position.
 		var nodeUpdate = node.transition()
 		  .duration(3000)
