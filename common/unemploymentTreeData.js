@@ -1,4 +1,4 @@
-var treeData = {
+var unemploymentTreeData = {
     "0": {
         "name": "Gansu",
         "parent": "null",
