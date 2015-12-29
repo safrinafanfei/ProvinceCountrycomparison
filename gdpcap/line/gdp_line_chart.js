@@ -1,7 +1,7 @@
-function makeCSV(provinceName) {
+function makeLineChart(provinceName, parentElement) {
     var PROVINCE_NAME = provinceName;
 
-    var CSV_INPUT = 'data/nations.csv';
+    var CSV_INPUT = 'line/data/nations.csv';
     var START_YEAR_NUMBER = 1996;
     var END_YEAR_NUMBER = 2014;
 
@@ -38,7 +38,7 @@ function makeCSV(provinceName) {
         .y(function(d) { return y(d.gdp_pc); });
 
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select(parentElement).append("svg")
         .attr("width", width + margin.left + margin.right + legendWidth)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
