@@ -4,6 +4,10 @@ jQuery(function($) {
     var divs = $('#head');
     $(window).on('scroll', function() {
         var st = $(this).scrollTop();
+        if (st > 200) {
+            // We only need to treat scroll event for the header. Ignore over scrolling.
+            return;
+        }
         divs.css({ 
             'margin-top' : -(st/3)+"px", 
             'opacity' : 1 - st/35
