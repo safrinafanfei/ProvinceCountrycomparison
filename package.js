@@ -13,22 +13,22 @@ jQuery(function($) {
 
 //* end of the opening chapter
 //* add preloading page
-$(document).ready(function() {
+// $(document).ready(function() {
  
-    setTimeout(function(){
-        $('body').addClass('loaded');
-    }, 5000);
+//     setTimeout(function(){
+//         $('body').addClass('loaded');
+//     }, 5000);
 
-$( "#loadsub" ).fadeIn( 1000, function() {
-    $( "h1" ).fadeIn( 100, function() {
-        $( "#loadtitle" ).fadeIn( 100, function() {
+// $( "#loadsub" ).fadeIn( 1000, function() {
+//     $( "h1" ).fadeIn( 100, function() {
+//         $( "#loadtitle" ).fadeIn( 100, function() {
     
-  });
+//   });
     
-  });
-  });
+//   });
+//   });
  
-});
+// });
 
 
 //     (document).ready(function() {
