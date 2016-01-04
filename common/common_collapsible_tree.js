@@ -1,4 +1,4 @@
-function makeTree(treeData, parentElement) {
+function makeTree(treeData, parentElement, hasPercentageSign) {
 	var COMMON_WIDTH = 600;		
 	var COMMON_HEIGHT = 350;
 
@@ -54,7 +54,7 @@ function makeTree(treeData, parentElement) {
 		  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
 		  .attr("dy", ".35em")
 		  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-		  .text(function(d) { return d.name+": " + d.value + "%"; })
+		  .text(function(d) { return d.name+": " + d.value + (hasPercentageSign ? "%" : ''); })
 		  .style("fill-opacity", 1e-6);
 
 		// Transition nodes to their new position.

@@ -1,2 +1,0 @@
-var COMMON_WIDTH = 600;		
-var COMMON_HEIGHT = 350;

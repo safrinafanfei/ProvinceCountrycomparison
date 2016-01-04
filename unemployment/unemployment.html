@@ -468,7 +468,7 @@
     <script src="../common/index2province.js"></script>
 
     <script src="../common/unemploymentTreeData.js"></script>
-    <script src="../collapsibletree/common_collapsible_tree.js"></script>
+    <script src="../common/common_collapsible_tree.js"></script>
 
     <script>
       /* Collapsible tree.*/
@@ -479,7 +479,10 @@
               .attr('id', treeIndex + '_2')
               .hide()
         );
-        makeTree(unemploymentTreeData[treeIndex], $('#' + treeIndex + '_2')[0]);
+        makeTree(
+          unemploymentTreeData[treeIndex],
+          $('#' + treeIndex + '_2')[0],
+          true /* has percentage sign */);
       }
     </script>
 
